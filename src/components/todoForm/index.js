@@ -1,4 +1,6 @@
 import React from 'react';
+import './index.css'
+
 class TodoForm extends React.Component{
     constructor(props){
         super(props);
@@ -15,14 +17,12 @@ class TodoForm extends React.Component{
         this.setState({text:e.target.value})
     }
 
-    
-
     render(){
         return(
             <div>
                 <p>
-                    <input value={this.state.text} onChange={this.updateText}/>
-                    <button onClick={this.submit}></button>
+                    <input value={this.state.text} onChange={this.updateText}/> &nbsp; 
+                    <button onClick={this.submit}>add</button>
                 </p>
             </div>
         )

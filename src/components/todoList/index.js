@@ -12,8 +12,8 @@ class TodoListComponent extends React.Component{
     }
 
     render(){
-        return this.props.todoList ? (
-            <div>
+           return (
+           <div>
                 {this.props.todoList.map((todo, index) => {
                         return <Todo key={index} 
                                     text={todo.text} 
@@ -25,7 +25,7 @@ class TodoListComponent extends React.Component{
                     })
                 }
             </div>
-        ) : null
+            )
     }
 }
 
