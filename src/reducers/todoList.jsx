@@ -5,7 +5,9 @@ const todoList = (state = [], action) => {
         case "DELETE_TODO" : 
             return [...state.filter((item) => item.id !== action.id)];   
         case "CHANGE_STATUS":
-            return [...state.map(item => item.id === action.id ? {...item,status:!item.status} : item)]
+            return [...state.map(item => item.id === action.id ? {...item,status:!item.status} : item)];
+        case "GET_ALL_TODO_LIST":
+            return action.todoList.map((item) => {return {id:item.id,status:item.status,text:item.content}});
         default :
             return state;
     }

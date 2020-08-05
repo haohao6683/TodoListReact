@@ -18,3 +18,10 @@ export function changeStatus(id){
         id: id
     }
 }
+
+export function getTodoList(todoList){
+    return{
+        type: "GET_ALL_TODO_LIST",
+        todoList: todoList
+    }
+}

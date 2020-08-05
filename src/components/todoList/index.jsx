@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from "../todo/index"
+import {getTodoList} from '../../API'
 
 class TodoListComponent extends React.Component{
 
@@ -9,6 +10,15 @@ class TodoListComponent extends React.Component{
 
     changeStatus = (id) => {
         this.props.changeStatus(id)
+    }
+
+    componentDidMount(){
+        //get data from api
+       getTodoList().then((res)=>{
+            let todoList = res.data;
+            this.props.getTodoList(todoList)
+        })
+        //send action ,update redux
     }
 
     render(){
