@@ -1,5 +1,6 @@
 import React from 'react';
-import './index.css';
+import { Button , Popconfirm , Input, Space} from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
 class TodoForm extends React.Component{
     constructor(props){
@@ -21,8 +22,12 @@ class TodoForm extends React.Component{
         return(
             <div>
                 <p>
-                    <input value={this.state.text} onChange={this.updateText}/> &nbsp; 
-                    <button onClick={this.submit}>add</button>
+                   <Space>
+                    <Input value={this.state.text} onChange={this.updateText } size="large" placeholder="To do item" prefix={<EditOutlined />}/>
+                    <Popconfirm title="Are you sure add this todo?" okText="Yes" cancelText="No" onConfirm={this.submit}>
+                            <Button type="primary" >add</Button>
+                    </Popconfirm>
+                   </Space>
                 </p>
             </div>
         )
