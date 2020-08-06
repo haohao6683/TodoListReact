@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button , Popconfirm , Input, Space} from 'antd';
 import { EditOutlined } from '@ant-design/icons';
+import {addTodo} from '../../API';
 
 class TodoForm extends React.Component{
     constructor(props){
@@ -11,7 +12,14 @@ class TodoForm extends React.Component{
     }
 
     submit = () => {
-        this.props.addTodo(this.state.text)
+        let todo = {
+            text: this.props.text,
+            status: !this.props.status
+        }
+        addTodo(todo).then((res)=>{
+            let todo = res.data;
+            this.props.addTodo(todo.text)
+        })
     }
 
     updateText = (e) => {

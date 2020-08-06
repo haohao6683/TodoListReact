@@ -8,10 +8,6 @@ class TodoListComponent extends React.Component{
         this.props.deleteTodo(id)
     }
 
-    changeStatus = (id) => {
-        this.props.changeStatus(id)
-    }
-
     componentDidMount(){
         //get data from api
        getTodoList().then((res)=>{
@@ -30,7 +26,6 @@ class TodoListComponent extends React.Component{
                                     deleteTodo={this.deleteTodo} 
                                     id={todo.id}
                                     status={todo.status}
-                                    changeStatus={this.changeStatus}
                                 />
                     })
                 }
