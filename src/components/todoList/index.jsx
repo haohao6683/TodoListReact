@@ -4,10 +4,6 @@ import {getTodoList} from '../../API'
 
 class TodoListComponent extends React.Component{
 
-    deleteTodo = (id) => {
-        this.props.deleteTodo(id)
-    }
-
     componentDidMount(){
         //get data from api
        getTodoList().then((res)=>{
@@ -23,7 +19,8 @@ class TodoListComponent extends React.Component{
                 {this.props.todoList.map((todo, index) => {
                         return <Todo key={index} 
                                     text={todo.text} 
-                                    deleteTodo={this.deleteTodo} 
+                                    changeStatus={this.props.changeStatus}
+                                    deleteTodo={this.props.deleteTodo} 
                                     id={todo.id}
                                     status={todo.status}
                                 />

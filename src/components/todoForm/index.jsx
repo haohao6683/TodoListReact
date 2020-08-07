@@ -13,12 +13,13 @@ class TodoForm extends React.Component{
 
     submit = () => {
         let todo = {
-            text: this.props.text,
-            status: !this.props.status
+            id: "",
+            text: this.state.text,
+            status: false
         }
         addTodo(todo).then((res)=>{
             let todo = res.data;
-            this.props.addTodo(todo.text)
+            this.props.addTodo(todo)
         })
     }
 
@@ -28,16 +29,12 @@ class TodoForm extends React.Component{
 
     render(){
         return(
-            <div>
-                <p>
-                   <Space>
-                    <Input value={this.state.text} onChange={this.updateText } size="large" placeholder="To do item" prefix={<EditOutlined />}/>
-                    <Popconfirm title="Are you sure add this todo?" okText="Yes" cancelText="No" onConfirm={this.submit}>
-                            <Button type="primary" >add</Button>
-                    </Popconfirm>
-                   </Space>
-                </p>
-            </div>
+            <Space>
+                <Input onChange={this.updateText} size="large" placeholder="To do item" prefix={<EditOutlined />}/>
+                <Popconfirm title="Are you sure add this todo?" okText="Yes" cancelText="No" onConfirm={this.submit}>
+                        <Button type="primary" >add</Button>
+                </Popconfirm>
+            </Space>
         )
     }
 }

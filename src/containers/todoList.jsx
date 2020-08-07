@@ -10,7 +10,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     deleteTodo: (id) => dispatch(deleteTodo(id)),
-    changeStatus: (id) => dispatch(changeStatus(id)),
     changeStatus: (id, todo) => dispatch(changeStatus(id, todo)),
     getTodoList: (todoList) => dispatch(getTodoList(todoList))    
 })

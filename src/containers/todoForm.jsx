@@ -4,7 +4,7 @@ import TodoForm from "../components/todoForm/index"
 
 const mapDispatchToProps = dispatch => {
     return {
-        addTodo: (text) => dispatch(addTodo(text)) 
+        addTodo: (todo) => dispatch(addTodo(todo)) 
     }
 }
 

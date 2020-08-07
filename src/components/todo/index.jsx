@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import { Button, Popconfirm} from 'antd';
 import { Card } from 'antd';
-import {updateTodo} from '../../API'
+import {updateTodo,deleteTodo} from '../../API'
 
 
 class Todo extends React.Component{
@@ -13,7 +13,12 @@ class Todo extends React.Component{
     }
 
     deleteTodo = () => {
-        this.props.deleteTodo(this.props.id)
+        let todo = {
+            id: this.props.id
+        }
+        deleteTodo(todo.id).then((res)=>{
+            this.props.deleteTodo(this.props.id)
+        })
     }
 
     changeStatus = () => {
@@ -24,7 +29,8 @@ class Todo extends React.Component{
         }
         updateTodo(todo.id, todo).then((res)=>{
             let todo = res.data;
-            this.changeStatus(todo.id, todo)
+            console.log(this.props);
+            this.props.changeStatus(todo.id, todo)
         })
     }
 
